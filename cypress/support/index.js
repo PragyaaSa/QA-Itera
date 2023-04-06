@@ -20,5 +20,5 @@ import './commands'
 // require('./commands')
 
 Cypress.on("uncaught:exception", (err, runnable) => {
-    return false;
-  });
+  return false;
+});

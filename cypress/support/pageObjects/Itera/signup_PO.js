@@ -71,9 +71,43 @@ class SignUp_PO {
     return this;
   }
 
+  typeRandomPassword(pass) {
+    cy.get('[id="Password"]').type(pass);
+    cy.get('[id="ConfirmPassword"]').type(pass);
+    return this;
+  }
+
+  typeIncorrectConfirmPassword() {
+    cy.get('[id="ConfirmPassword"]').type("sdgsdrfvsd");
+    return this;
+  }
+
+  passwordUnmatchedValidation() {
+    cy.get('[id="ConfirmPassword-error"]')
+      .contains("'Confirm password' and 'Password' do not match.")
+      .should("exist");
+    return this;
+  }
+
   clickOnSubmitButton() {
     cy.get('[id="submit"]').click();
 
+    return this;
+  }
+
+  emptyFiledsErrorValidation() {
+    cy.get('[id="FirstName-error"]')
+      .contains("Please enter first name")
+      .should("exist");
+    cy.get('[id="Surname-error"]')
+      .contains("Please enter surname")
+      .should("exist");
+    cy.get('[id="Username-error"]')
+      .contains("Please enter username")
+      .should("exist");
+    cy.get('[id="Password-error"]')
+      .contains("Please enter password")
+      .should("exist");
     return this;
   }
 

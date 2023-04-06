@@ -7,7 +7,10 @@ import { faker } from "@faker-js/faker";
 
 const login_PO = new Login_PO();
 
-const errorClassValidation = ["Please enter username", "Please enter password"];
+const errorClassValidation = [
+  "Please enter username", 
+  "Please enter password"
+];
 
 describe("Logging in for Itera ", () => {
   before(() => {
@@ -23,9 +26,9 @@ describe("Logging in for Itera ", () => {
       login_PO.loginButtonValidation().clickOnLoginButton();
     });
 
-    it("Should validate login page", function () {
+    it("Should validate login page", function (){
       login_PO.validateLoginUrl();
-    });
+    })
 
     it("Should not login with empty fields", function () {
       login_PO
@@ -41,6 +44,7 @@ describe("Logging in for Itera ", () => {
     });
 
     it("Should not login with incorrect credentials", function () {
+     
       const userName = faker.internet.userName();
       const password = faker.internet.password();
 
@@ -52,6 +56,7 @@ describe("Logging in for Itera ", () => {
     });
 
     it("Should take user to registration page if not registered", function () {
+      
       const signUp_PO = new SignUp_PO();
 
       login_PO.clickOnRegisterLink();

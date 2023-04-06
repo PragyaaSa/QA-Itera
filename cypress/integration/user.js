@@ -4,7 +4,6 @@ import User_PO from "../support/pageObjects/Itera/user_PO";
 import { faker } from "@faker-js/faker";
 
 const newUser_PO = new User_PO();
-
 const name = faker.name.fullName();
 
 describe("Logging in for Itera ", () => {

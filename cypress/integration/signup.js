@@ -29,7 +29,7 @@ describe("Signing up in Itera ", () => {
 
     it("Should not sign up with empty fields", function () {
       signUp_PO.clickOnSubmitButton();
-
+      
       errorClassValidation.forEach((errorMsg) => {
         cy.contains(errorMsg).should("exist");
       });
@@ -47,6 +47,7 @@ describe("Signing up in Itera ", () => {
     });
 
     it("Should not register with different values in password and confirm password", function () {
+     
       const incorrectPassword = faker.internet.password();
 
       signUp_PO
@@ -57,6 +58,7 @@ describe("Signing up in Itera ", () => {
     });
 
     it("Should register successfully", function () {
+      
       const firstName = faker.name.firstName();
       const lastName = faker.name.lastName();
       const userName = faker.internet.userName();
