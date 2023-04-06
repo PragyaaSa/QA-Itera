@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("validateSuccessfulLogin", () => {
+    cy.get(".nav-link").contains("Login").should("exist");
+    cy.get(".nav-link").contains("Login").click();
+    cy.url().should("include", "/Login");
+    cy.get('[id="Username"]').type(Cypress.env("username"));
+    cy.get('[id="Password"]').type(Cypress.env("password"));
+    cy.get("input[name='login']").click();
+  
+    cy.url().should("include", "/Dashboard");
+  });
+  
+  Cypress.Commands.add("preserveCookies", () => {
+    Cypress.Cookies.preserveOnce("ASP.NET_SessionId");
+  });
